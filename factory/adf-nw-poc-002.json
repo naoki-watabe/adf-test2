@@ -1,0 +1,9 @@
+{
+	"name": "adf-nw-poc-002",
+	"location": "japaneast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7b409d74-d048-48eb-8344-8ef7167ee26f",
+		"tenantId": "2d7ea03f-928a-4ba1-80b1-cb90b4f3881e"
+	}
+}
