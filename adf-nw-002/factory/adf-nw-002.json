@@ -1,5 +1,13 @@
 {
 	"name": "adf-nw-002",
+	"properties": {
+		"globalParameters": {
+			"test01": {
+				"type": "string",
+				"value": "12345"
+			}
+		}
+	},
 	"location": "japaneast",
 	"identity": {
 		"type": "SystemAssigned",
