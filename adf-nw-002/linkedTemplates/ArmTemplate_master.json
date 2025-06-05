@@ -1,0 +1,49 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "データ ファクトリ名",
+			"defaultValue": "adf-nw-002"
+		},
+		"default_properties_test01_value": {
+			"type": "string",
+			"defaultValue": "12345"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "リンクされた ARM テンプレートを含むストレージ アカウントの URI"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "リンクされた ARM テンプレートを格納するストレージ アカウントへの SAS トークン"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-nw-002_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"default_properties_test01_value": {
+						"value": "[parameters('default_properties_test01_value')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
